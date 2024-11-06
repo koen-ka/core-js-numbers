@@ -265,10 +265,11 @@ function getFibonacciNumber(index) {
   if (index === 0) return 0;
   if (index === 1) return 1;
 
-  let pre = 0, next = 1;
+  let pre = 0;
+  let next = 1;
 
   for (let i = 2; i <= index; i += 1) {
-    let next = pre + next;
+    const futureNum = pre + next;
     pre = next;
     next = futureNum;
   }
@@ -323,11 +324,12 @@ function getSumOfDigits(num) {
 function isPowerOfTwo(num) {
   if (num < 1) return false;
 
-  while (num % 2 === 0) {
-    num /= 2;
+  let current = num;
+  while (current % 2 === 0) {
+    current /= 2;
   }
 
-  return num === 1;
+  return current === 1;
 }
 
 /**
@@ -434,7 +436,7 @@ function getNumberValue(number) {
  * '5'      => false
  */
 function isNumber(number) {
-  return typeof number === 'number' && isFinite(number);
+  return typeof number === 'number' && Number.isFinite(number);
 }
 
 /**
@@ -570,7 +572,7 @@ function getIntegerPartNumber(number) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(x1, x2, x3) {
-  return x1 + x2 + x3;
+  return (x1 + x2 + x3).toFixed(1);
 }
 
 /**
